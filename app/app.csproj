@@ -14,4 +14,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AirBnb.BL\AirBnb.BL.csproj" />
+  </ItemGroup>
+
 </Project>
