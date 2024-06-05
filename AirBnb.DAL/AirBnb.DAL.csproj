@@ -6,11 +6,6 @@
 		<Nullable>Disable</Nullable>
 	</PropertyGroup>
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 80dbac297851b6152f37e70d245c5096699c76f4
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.5" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.5" />
@@ -21,13 +16,5 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
-<<<<<<< HEAD
-
 
 </Project>
-
-
-
-=======
-</Project>
->>>>>>> 80dbac297851b6152f37e70d245c5096699c76f4
