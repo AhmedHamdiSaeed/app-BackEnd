@@ -29,6 +29,7 @@ namespace AirBnb.DAL.Data.Model
 		public IEnumerable<PropertyImage> PropertyImages { get; set; } = new HashSet<PropertyImage>();
 		public IEnumerable<Booking> PropertyBokking { get; set; } = new HashSet<Booking>();
 
+        public IEnumerable<AppointmentsAvailable> AppointmentsAvailable { get; set; } = new HashSet<AppointmentsAvailable>();
 
-	}
+    }
 }
