@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirBnb.DAL.Data.Model
+namespace AirBnb.BL.Dtos.PropertyDtos
 {
-	public class Amenity:BaseEntity<int>
+	public class DisplayAllPropertyDto
 	{
-
+		public int Id { get; set; }
 		public string Name { get; set; } = string.Empty;
-		public string Description { get; set; } = string.Empty;
-		public int propertyId { get; set; }
-		
 
+		public string City { get; set; }
 	}
 }
