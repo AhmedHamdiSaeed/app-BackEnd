@@ -64,7 +64,7 @@ namespace AirBnb.BL.Managers.Properties
 		{
 			var property = await _unitOfWork.PropertyRepository.GetByIdAsync(propertyId);
 			var user = await _unitOfWork.UserRepository.GetUserByIdAsync(property.UserId);
-			var cityInfo = await _unitOfWork.CityPrpository.GetcountrywithCities(property.CityId);
+			var cityInfo = await _unitOfWork.CityRepository.GetCityByIdWithCountry(property.CityId);
 
 			if (property == null) { return null; };
 

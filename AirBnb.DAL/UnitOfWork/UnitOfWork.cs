@@ -3,7 +3,8 @@ using AirBnb.DAL.Repos.AmentityRepo;
 using AirBnb.DAL.Repos.AppointmentAvailableRepo;
 using AirBnb.DAL.Repos.BookingRepo;
 using AirBnb.DAL.Repos.CategoryRepo;
-using AirBnb.DAL.Repos.cityRepo;
+using AirBnb.DAL.Repos.CityRepo;
+using AirBnb.DAL.Repos.CountryRepo;
 using AirBnb.DAL.Repos.PropertyRepo;
 using AirBnb.DAL.Repos.ReviewRepo;
 using AirBnb.DAL.Repos.UserRepo;
@@ -28,20 +29,31 @@ namespace AirBnb.DAL.Unit
 
 		public IPropertyRepository PropertyRepository { get; }
 
-		public ICityPrpository CityPrpository { get; }
-
+		public ICityRepository CityRepository { get; }
+		public ICountryRepository CountryRepository { get; }
 		public IUserRepository UserRepository { get; }
-		public UnitOfWork(AppDbContext context, IUserRepository userRepository, ICityPrpository cityPrpository, IPropertyRepository propertyRepository, IBookingRepository bookingRepository, IReviewRepository reviewRepository, IApptAvailableRepository apptAvailableRepository, IAmentityRepository amentityRepository, ICategoryRepository categoryRepository)
+
+		public UnitOfWork(AppDbContext context,
+						IUserRepository userRepository,
+						ICityRepository cityRrpository,
+						IPropertyRepository propertyRepository,
+						IBookingRepository bookingRepository, 
+						IReviewRepository reviewRepository,
+						IApptAvailableRepository apptAvailableRepository, 
+						IAmentityRepository amentityRepository, 
+						ICategoryRepository categoryRepository,
+						ICountryRepository countryRepository)
         {
             _context = context;
 			BookingRepository = bookingRepository;
 			ReviewRepository = reviewRepository;
 			AmentityRepository = amentityRepository;
-			CategoryRepository = categoryRepository;
 			ApptAvailableRepository = apptAvailableRepository;
 			PropertyRepository = propertyRepository;
-			CityPrpository = cityPrpository;
 			UserRepository = userRepository;
+			CategoryRepository = categoryRepository;
+			CityRepository = cityRrpository; 
+            CountryRepository = countryRepository;
 		}
         public int SaveChanges()
 		{

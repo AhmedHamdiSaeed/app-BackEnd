@@ -6,10 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirBnb.DAL.Repos.CategoryRepo
+namespace AirBnb.DAL.Repos.CountryRepo
 {
-	public interface ICategoryRepository : IGenericRepository<Category>
-	{
-		Task<Category> GetPropertiesOfCategory(int categoryId);
-	}
+    public interface ICountryRepository:IGenericRepository<Country>
+    {
+    }
 }
