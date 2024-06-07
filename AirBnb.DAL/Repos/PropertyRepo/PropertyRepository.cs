@@ -30,8 +30,32 @@ public class PropertyRepository : GenericRepository<Property>, IPropertyReposito
     public async Task<IEnumerable<Property>> GetAllPropertyAsync()
     {
         return await _context.Set<Property>()
-            .Include(p => p.City)
+            .Include(p => p.City).Include(p => p.Category)
             .AsNoTracking().ToListAsync();
+    }
+
+    public async Task<IEnumerable<Property>> GetAllPropertyForAllUsers(int? cityId = null, int? cateId = null)
+    {
+
+        var query = _context.Set<Property>().Where(x => x.Status == Status.Confirmed).AsNoTracking().AsQueryable();
+
+
+        if (cityId.HasValue)
+        {
+            query = query.Where(p => p.CityId == cityId.Value);
+        }
+        if (cateId.HasValue)
+        {
+            query = query.Where(p => p.CategoryId == cateId.Value);
+        }
+
+
+        return await query.ToListAsync();
+    }
+
+    public async Task<IEnumerable<Property>> GetHosterProperties(string hosterId)
+    {
+        return await _context.Set<Property>().AsNoTracking().Where(x => x.UserId == hosterId).ToListAsync();
     }
 
     public async Task<Property> GetProperty(int id)

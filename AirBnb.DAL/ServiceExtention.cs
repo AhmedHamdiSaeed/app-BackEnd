@@ -17,6 +17,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AirBnb.DAL.Repos.PropertyRepo;
+using AirBnb.DAL.Repos.cityRepo;
+using AirBnb.DAL.Repos.UserRepo;
 
 namespace AirBnb.DAL
 {
@@ -30,7 +32,11 @@ namespace AirBnb.DAL
 
 			service.AddScoped<IReviewRepository, ReviewRepository>();
 			service.AddScoped<IBookingRepository, BookingRepository>();
-            service.AddScoped<IPropertyRepository, PropertyRepository>();
+            
+			service.AddScoped<IPropertyRepository, PropertyRepository>();
+            service.AddScoped<IUserRepository, UserRepository>();
+            service.AddScoped<ICityPrpository, CityPrpository>();
+
             service.AddScoped<IAmentityRepository, AmentityRepository>();
 			service.AddScoped<IApptAvailableRepository, ApptAvailableRepository>();
 			service.AddScoped<ICategoryRepository , CategoryRepository>();	
