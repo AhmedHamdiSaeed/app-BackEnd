@@ -2,6 +2,7 @@
 using AirBnb.API.Extentions;
 using AirBnb.BL;
 using AirBnb.DAL;
+using Microsoft.Extensions.FileProviders;
 
 namespace AirBnb.API
 {
@@ -42,8 +43,14 @@ namespace AirBnb.API
 			}
 
 
-
-			app.UseHttpsRedirection();
+            app.UseStaticFiles(
+           new StaticFileOptions
+           {
+               FileProvider = new PhysicalFileProvider(Path.Combine(Environment.CurrentDirectory, "Images")),
+               RequestPath = "/Images"
+           }
+    );
+            app.UseHttpsRedirection();
 
 			app.UseCors("AllowAllDomains");
 			app.UseAuthentication();

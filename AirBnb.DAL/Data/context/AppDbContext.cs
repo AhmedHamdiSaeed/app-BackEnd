@@ -84,7 +84,7 @@ namespace AirBnb.DAL.Data.context
 
 			#region category
 			builder.Entity<Category>().HasData(
-				new Category { Id = 21, Name = "Apartment",Description="Description For Category" },
+				new Category { Id = 21, Name = "Apartment", Description = "Description For Category" },
 				new Category { Id = 1, Name = "Entire Place", Description = "Guests have the entire home or apartment to themselves" },
 				new Category { Id = 2, Name = "Private Room", Description = "Guests have a private room but share common areas with the host or other guests" },
 				new Category { Id = 3, Name = "Shared Room", Description = "Guests share a room with the host or other guests" },
@@ -110,14 +110,14 @@ namespace AirBnb.DAL.Data.context
 
 
 
-		
+
 
 				);
 			#endregion
 
-			#region Property
+				#region Property
 			builder.Entity<Property>().HasData(
-				new Property { Id=1, Name="Apartment",Description="No Description", Adress="Cairo",NumberOfBathrooms=1,NumberOfBedrooms=4,Beds=8,UserId= "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f",CategoryId=1,CityId=1,Status=Status.Pending },
+				new Property { Id = 1, Name = "Apartment", Description = "No Description", Adress = "Cairo", NumberOfBathrooms = 1, NumberOfBedrooms = 4, Beds = 8, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", CategoryId = 1, CityId = 1, Status = Status.Pending },
 				new Property { Id = 2, Name = "Beach House", Description = "Sea view with modern amenities", Adress = "Alexandria", NumberOfBathrooms = 2, NumberOfBedrooms = 3, Beds = 5, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", CategoryId = 2, CityId = 2, Status = Status.Confirmed },
 				new Property { Id = 3, Name = "Mountain Cabin", Description = "Cozy cabin in the mountains", Adress = "Aswan", NumberOfBathrooms = 1, NumberOfBedrooms = 2, Beds = 3, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", CategoryId = 3, CityId = 3, Status = Status.Pending },
 				new Property { Id = 4, Name = "Luxury Villa", Description = "Luxurious villa with a private pool", Adress = "Sharm El-Sheikh", NumberOfBathrooms = 4, NumberOfBedrooms = 5, Beds = 10, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", CategoryId = 4, CityId = 4, Status = Status.Canceled },
@@ -137,7 +137,7 @@ namespace AirBnb.DAL.Data.context
 				new Property { Id = 18, Name = "Eco-Friendly House", Description = "Eco-friendly house with solar panels", Adress = "Port Said", NumberOfBathrooms = 2, NumberOfBedrooms = 3, Beds = 5, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", CategoryId = 18, CityId = 18, Status = Status.Canceled },
 				new Property { Id = 19, Name = "Seaside Villa", Description = "Villa with a view of the sea", Adress = "Hurghada", NumberOfBathrooms = 4, NumberOfBedrooms = 5, Beds = 9, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", CategoryId = 19, CityId = 19, Status = Status.Pending },
 				new Property { Id = 20, Name = "Rustic Cabin", Description = "Cabin with a rustic charm", Adress = "Sinai", NumberOfBathrooms = 1, NumberOfBedrooms = 2, Beds = 3, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", CategoryId = 20, CityId = 20, Status = Status.Confirmed }
-			
+
 
 				);
 			#endregion
@@ -145,7 +145,7 @@ namespace AirBnb.DAL.Data.context
 
 			#region PropertyImage
 			builder.Entity<PropertyImage>().HasData(
-				
+
 				new PropertyImage { Id = 1, PropertyId = 1, ImageUrl = "https://example.com/image1.jpg", IsMainImage = true },
 				new PropertyImage { Id = 2, PropertyId = 1, ImageUrl = "https://example.com/image2.jpg", IsMainImage = false },
 				new PropertyImage { Id = 3, PropertyId = 1, ImageUrl = "https://example.com/image3.jpg", IsMainImage = false },
@@ -225,7 +225,7 @@ namespace AirBnb.DAL.Data.context
 
 			#region Amentity
 			builder.Entity<Amenity>().HasData(
-				new Amenity { Id = 21, Name = "Egypt" ,Description="No Description",propertyId=1},
+				new Amenity { Id = 21, Name = "Egypt", Description = "No Description", propertyId = 1 },
 				new Amenity { Id = 1, Name = "Swimming Pool", Description = "Large outdoor pool", propertyId = 1 },
 				new Amenity { Id = 2, Name = "Gym", Description = "Fully equipped fitness center", propertyId = 2 },
 				new Amenity { Id = 3, Name = "WiFi", Description = "High-speed wireless internet", propertyId = 3 },
@@ -253,7 +253,7 @@ namespace AirBnb.DAL.Data.context
 
 			#region countries
 			builder.Entity<AppointmentsAvailable>().HasData(
-				new AppointmentsAvailable { Id = 21, PropertyId = 1,From=DateTime.Now, To=DateTime.Now.AddDays(5),PricePerNight=20,IsAvailable=true },
+				new AppointmentsAvailable { Id = 21, PropertyId = 1, From = DateTime.Now, To = DateTime.Now.AddDays(5), PricePerNight = 20, IsAvailable = true },
 				new AppointmentsAvailable { Id = 1, PropertyId = 1, From = DateTime.Now, To = DateTime.Now.AddDays(5), PricePerNight = 20, IsAvailable = true },
 				new AppointmentsAvailable { Id = 2, PropertyId = 2, From = DateTime.Now.AddDays(1), To = DateTime.Now.AddDays(6), PricePerNight = 25, IsAvailable = true },
 				new AppointmentsAvailable { Id = 3, PropertyId = 3, From = DateTime.Now.AddDays(2), To = DateTime.Now.AddDays(7), PricePerNight = 30, IsAvailable = false },
@@ -281,7 +281,7 @@ namespace AirBnb.DAL.Data.context
 
 			#region Booking
 			builder.Entity<Booking>().HasData(
-				new Booking { Id = 21, PropertyId = 1, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f",CheckInDate=DateTime.Now,CheckOutDate=DateTime.Now.AddDays(5),TotalPrice=100,BookingStatus=Status.Pending },
+				new Booking { Id = 21, PropertyId = 1, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", CheckInDate = DateTime.Now, CheckOutDate = DateTime.Now.AddDays(5), TotalPrice = 100, BookingStatus = Status.Pending },
 				new Booking { Id = 1, PropertyId = 1, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", CheckInDate = DateTime.Now, CheckOutDate = DateTime.Now.AddDays(5), TotalPrice = 100, BookingStatus = Status.Pending },
 				new Booking { Id = 2, PropertyId = 2, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", CheckInDate = DateTime.Now.AddDays(1), CheckOutDate = DateTime.Now.AddDays(6), TotalPrice = 150, BookingStatus = Status.Confirmed },
 				new Booking { Id = 3, PropertyId = 3, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", CheckInDate = DateTime.Now.AddDays(2), CheckOutDate = DateTime.Now.AddDays(7), TotalPrice = 200, BookingStatus = Status.Confirmed },
@@ -308,7 +308,7 @@ namespace AirBnb.DAL.Data.context
 
 			#region Review
 			builder.Entity<Review>().HasData(
-				new Review { Id=1,BookingId=1, UserId= "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f",Rating=5, Comment="Good Comment" },
+				new Review { Id = 1, BookingId = 1, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", Rating = 5, Comment = "Good Comment" },
 				new Review { Id = 2, BookingId = 2, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", Rating = 4, Comment = "Nice place" },
 				new Review { Id = 3, BookingId = 3, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", Rating = 3, Comment = "Average experience" },
 				new Review { Id = 4, BookingId = 4, UserId = "53f9998c-e5c9-4bd5-8db6-eefc68f7fb4f", Rating = 2, Comment = "Not as expected" },
@@ -332,7 +332,7 @@ namespace AirBnb.DAL.Data.context
 			#endregion
 			#region Rule
 			builder.Entity<Rule>().HasData(
-				new Rule { Id = 1, CheckIn= new TimeOnly(16, 0), CheckOut= new TimeOnly(9, 0), NumberOfGuest=2,Pets=true, TakePhotos=true, PropertyId=1 },
+				new Rule { Id = 1, CheckIn = new TimeOnly(16, 0), CheckOut = new TimeOnly(9, 0), NumberOfGuest = 2, Pets = true, TakePhotos = true, PropertyId = 1 },
 				new Rule { Id = 21, CheckIn = new TimeOnly(16, 0), CheckOut = new TimeOnly(9, 0), NumberOfGuest = 2, Pets = true, TakePhotos = true, PropertyId = 1 },
 				new Rule { Id = 2, CheckIn = new TimeOnly(15, 0), CheckOut = new TimeOnly(10, 0), NumberOfGuest = 3, Pets = false, TakePhotos = true, PropertyId = 2 },
 				new Rule { Id = 3, CheckIn = new TimeOnly(17, 0), CheckOut = new TimeOnly(11, 0), NumberOfGuest = 4, Pets = true, TakePhotos = false, PropertyId = 3 },

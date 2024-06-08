@@ -2,8 +2,9 @@
 {
 	public class Category:BaseEntity<int>
 	{
-		public string Name { get; set; }=string.Empty;	
-		public string Description { get; set; }=string.Empty ;
+		public string Name { get; set; }=null!;	
+		public string Description { get; set; }=string.Empty;
+		public string? IconURL { get; set; }
 		public IEnumerable<Property> Properties { get; set; }=new HashSet<Property>();
 
 	}

@@ -18,41 +18,38 @@ namespace AirBnb.BL.Managers.Categories
 			_unitOfWork = unitOfWork;
 		}
 
-		public async Task AddCategory(CategoryDtos categoryDto) //admin
+		public async Task<CategoryDto> AddCategory(CategoryDto category)
 		{
-			var category = new Category
+            Console.WriteLine($"categoryDto BL: {category}");
+            var newCategory = new Category
 			{
-				Name = categoryDto.Name,
-				Description = categoryDto.IconUrl
+				Name = category.Name,
+				IconURL = category.IconURL,
+				Description=category.Desc
 			};
 
-			await _unitOfWork.CategoryRepository.AddAsync(category);
+			await _unitOfWork.CategoryRepository.AddAsync(newCategory);
 			_unitOfWork.SaveChanges();
+			return category;
 		}
 
-		public async Task<IEnumerable<CategoryDtos>> GetAllCategories() //user 
+		public async Task<IEnumerable<CategoryDto>> GetAllCategories()
 		{
 			var categories = await _unitOfWork.CategoryRepository.GetAllAsync();
-			return categories.Select(c => new CategoryDtos
-			{
-				Name = c.Name,
-				IconUrl = c.Description
-			}).ToList();
+			return categories.Select(c => new CategoryDto(c.Name,c.IconURL,c.Description)).ToList();
 		}
 
 
-		public async Task<CategoryDtos> GetCategoryById(int id) //user
+
+		public async Task<CategoryDto> GetCategoryById(int id) //user
 		{
-			Category category = await _unitOfWork.CategoryRepository.GetByIdAsync(id);
-			if (category is null)
+			var category = await _unitOfWork.CategoryRepository.GetByIdAsync(id);
+			if (category ==null)
 			{
 				return null;
 			}
-			return new CategoryDtos
-			{
-				Name = category.Name,
-				IconUrl = category.Description
-			};
+			return new CategoryDto(category.Name,category.IconURL,category.Description);
+		
 		}
 
 
@@ -92,20 +89,20 @@ namespace AirBnb.BL.Managers.Categories
 			return true;
 		}
 
-		public async Task<bool> UpdateCategory(EditCategoryDtos categoryDto) //admin
-		{
-			Category category = await _unitOfWork.CategoryRepository.GetByIdAsync(categoryDto.Id);
-			if (category is null)
-			{
-				return false;
-			}
+		//public async Task<bool> UpdateCategory(EditCategoryDtos categoryDto) //admin
+		//{
+		//	Category category = await _unitOfWork.CategoryRepository.GetByIdAsync(categoryDto.Id);
+		//	if (category is null)
+		//	{
+		//		return false;
+		//	}
 
-			category.Name = categoryDto.Name;
-			category.Description = categoryDto.IconUrl;
+		//	category.Name = categoryDto.Name;
+		//	category.Description = categoryDto.IconUrl;
 
-			_unitOfWork.CategoryRepository.Update(category);
-			_unitOfWork.SaveChanges();
-			return true;
-		}
+		//	_unitOfWork.CategoryRepository.Update(category);
+		//	_unitOfWork.SaveChanges();
+		//	return true;
+		//}
 	}
 }
