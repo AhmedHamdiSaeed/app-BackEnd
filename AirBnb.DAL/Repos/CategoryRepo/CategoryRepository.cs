@@ -1,7 +1,6 @@
 ﻿using AirBnb.DAL.Data.context;
 using AirBnb.DAL.Data.Model;
 using AirBnb.DAL.Repos.GenericRepo;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +16,5 @@ namespace AirBnb.DAL.Repos.CategoryRepo
 		{
 			_context = context;
 		}
-
-        public async Task<Category> GetPropertiesOfCategory(int categoryId)
-        {
-                return await _context.Set<Category>()
-                                     .Include(c => c.Properties)
-                                     .FirstOrDefaultAsync(x => x.Id == categoryId);
-        }
-    }
+	}
 }

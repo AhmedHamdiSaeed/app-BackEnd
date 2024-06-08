@@ -4,43 +4,41 @@ using AirBnb.BL;
 using AirBnb.DAL;
 using Microsoft.Extensions.FileProviders;
 
-namespace AirBnb.API
+namespace app
 {
-	public class Program
-	{
-		public static void Main(string[] args)
-		{
-			var builder = WebApplication.CreateBuilder(args);
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+            #region CORS Policy
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllDomains", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+            #endregion
+            // Add services to the container.
 
+            builder.Services.AddControllers();
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+            builder.Services.AddBLServices();
+            builder.Services.AddDALService(builder.Configuration);
+            builder.Services.AddCustomJwtAuth(builder.Configuration);
+            var app = builder.Build();
 
-			#region CORS Policy
-			builder.Services.AddCors(options =>
-			{
-				options.AddPolicy("AllowAllDomains", policy =>
-				{
-					policy.AllowAnyOrigin()
-						  .AllowAnyHeader()
-						  .AllowAnyMethod();
-				});
-			});
-			#endregion
-			// Add services to the container.
-
-			builder.Services.AddControllers();
-			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen();
-			builder.Services.AddBLServices();
-			builder.Services.AddDALService(builder.Configuration);
-			builder.Services.AddCustomJwtAuth(builder.Configuration);
-			var app = builder.Build();
-
-			// Configure the HTTP request pipeline.
-			if (app.Environment.IsDevelopment())
-			{
-				app.UseSwagger();
-				app.UseSwaggerUI();
-			}
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
 
 
             app.UseStaticFiles(
@@ -52,14 +50,14 @@ namespace AirBnb.API
     );
             app.UseHttpsRedirection();
 
-			app.UseCors("AllowAllDomains");
-			app.UseAuthentication();
-			app.UseAuthorization();
+            app.UseCors("AllowAllDomains");
+            app.UseAuthentication();
+            app.UseAuthorization();
 
 
-			app.MapControllers();
+            app.MapControllers();
 
-			app.Run();
-		}
-	}
+            app.Run();
+        }
+    }
 }

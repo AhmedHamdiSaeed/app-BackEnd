@@ -3,8 +3,7 @@ using AirBnb.DAL.Repos.AmentityRepo;
 using AirBnb.DAL.Repos.AppointmentAvailableRepo;
 using AirBnb.DAL.Repos.BookingRepo;
 using AirBnb.DAL.Repos.CategoryRepo;
-using AirBnb.DAL.Repos.CityRepo;
-using AirBnb.DAL.Repos.CountryRepo;
+using AirBnb.DAL.Repos.cityRepo;
 using AirBnb.DAL.Repos.PropertyRepo;
 using AirBnb.DAL.Repos.ReviewRepo;
 using AirBnb.DAL.Repos.UserRepo;
@@ -27,37 +26,37 @@ namespace AirBnb.DAL.Unit
 		public ICategoryRepository CategoryRepository { get; }
 		public IApptAvailableRepository ApptAvailableRepository { get; }
 
-		public IPropertyRepository PropertyRepository { get; }
+        public IPropertyRepository PropertyRepository { get; }
 
-		public ICityRepository CityRepository { get; }
-		public ICountryRepository CountryRepository { get; }
-		public IUserRepository UserRepository { get; }
+        public IUserRepository UserRepository { get; }
 
-		public UnitOfWork(AppDbContext context,
-						IUserRepository userRepository,
-						ICityRepository cityRrpository,
-						IPropertyRepository propertyRepository,
-						IBookingRepository bookingRepository, 
-						IReviewRepository reviewRepository,
-						IApptAvailableRepository apptAvailableRepository, 
-						IAmentityRepository amentityRepository, 
-						ICategoryRepository categoryRepository,
-						ICountryRepository countryRepository)
+        public ICityPrpository CityPrpository { get; }
+
+        public UnitOfWork(AppDbContext context, IBookingRepository bookingRepository, IReviewRepository reviewRepository, IApptAvailableRepository apptAvailableRepository,
+			IAmentityRepository amentityRepository, 
+			ICategoryRepository categoryRepository, 
+			IPropertyRepository propertyRepository,
+            IUserRepository userRepository,
+            ICityPrpository cityPrpository)
         {
             _context = context;
 			BookingRepository = bookingRepository;
 			ReviewRepository = reviewRepository;
 			AmentityRepository = amentityRepository;
-			ApptAvailableRepository = apptAvailableRepository;
-			PropertyRepository = propertyRepository;
-			UserRepository = userRepository;
 			CategoryRepository = categoryRepository;
-			CityRepository = cityRrpository; 
-            CountryRepository = countryRepository;
-		}
+			ApptAvailableRepository = apptAvailableRepository;
+            PropertyRepository= propertyRepository;
+            UserRepository= userRepository;
+            CityPrpository = cityPrpository;
+        }
         public int SaveChanges()
 		{
 			return _context.SaveChanges();
 		}
-	}
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
+    }
 }
